@@ -1,17 +1,24 @@
-const newMessage = {
-  title: "Jonathan",
-  message: "Hola mundo",
-};
+import PropTypes from "prop-types";
 
-function getResult() {
-  return 4 + 4;
-}
+export const FirstApp = ({ title, subtitle }) => {
+  if (!title) {
+    throw new Error("El título no existe");
+  }
 
-export const FirstApp = () => {
   return (
     <>
-      <h1>{getResult()}</h1>
-      <p>{newMessage.message}</p>
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
     </>
   );
+};
+
+FirstApp.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.number,
+};
+
+FirstApp.defaultProps = {
+  title: "No hay ningún título",
+  subtitle: "Hola",
 };
